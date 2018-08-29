@@ -1,4 +1,5 @@
 package brinquedotroca.entities;
+
 import java.util.List;
 
 import javax.persistence.Column;
