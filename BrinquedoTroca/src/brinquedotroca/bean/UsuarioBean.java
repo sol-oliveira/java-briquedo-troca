@@ -47,9 +47,9 @@ public class UsuarioBean {
 		
 		UsuarioRepository usuariorepository = new UsuarioRepository(manager);
 		
-		Usuario usuario = new Usuario();
-		usuario.setEmail(email);
+		Usuario usuario = new Usuario();	
 		usuario.setNome(nome);
+		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		
 		usuariorepository.adicionaUsuario(usuario);		
