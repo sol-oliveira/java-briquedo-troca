@@ -11,19 +11,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+	<link href="css/bootstrap.min.css" rel="stylesheet"/>
+    
 <title>CadastroUsuario</title>
 </head>
 <body>
 <f:view>
- <h:form> 
-  <h:outputLabel value= "Cadastro de Usuario" /> <Br /><Br />
+ <h:form class="container"> 
+  <h:outputLabel class="jumbotron" value= "Cadastro de Usuario" /> <Br /><Br />
   <h:outputLabel value = "Nome: "/> 
   <h:inputText value= "#{usuarioBean.nome}"/> <Br />  
   <h:outputLabel value= "E-Mail: "  />
   <h:inputText value= "#{usuarioBean.email}" /> <Br/>		
   <h:outputLabel value= "Senha: "  />
-  <h:inputText value= "#{usuarioBean.senha}" /> <Br/>			
-  <h:commandButton value="Salvar" action= "#{usuarioBean.cadastrarUsuario}"/>	 
+  <h:inputText value= "#{usuarioBean.senha}" /> <Br/>
+  <h:commandButton class="btn btn-primary" value="Salvar" action= "#{usuarioBean.cadastrarUsuario}"/>	 
  </h:form>
 </f:view>
 </body>
