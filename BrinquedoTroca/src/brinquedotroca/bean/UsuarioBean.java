@@ -1,9 +1,8 @@
 package brinquedotroca.bean;
 
-
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Persistence;
-
 import brinquedotroca.entities.Usuario;
 import brinquedotroca.repository.UsuarioRepository;
 
@@ -12,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 
 
 @ManagedBean
+@RequestScoped
 public class UsuarioBean {
 	
 	String nome;
@@ -58,11 +58,17 @@ public class UsuarioBean {
 
 		manager.close();
 
-		factory.close();		
+		factory.close();	
 		
-		return "respostaUsuario";
+		nome = "";
+		email = "";
+		senha = "";
+		
+		return "cadastro";
 	}
 	
 
 
+	
+	
 }

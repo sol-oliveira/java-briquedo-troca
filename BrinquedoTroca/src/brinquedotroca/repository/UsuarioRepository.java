@@ -22,5 +22,23 @@ public class UsuarioRepository {
 		this.manager.persist(usuario);
 	}
 		
+	public Usuario buscaAutenticacao(String usuario) {
+		Usuario result = null;
+		try{
+			result = (Usuario)manager
+	                .createQuery(
+	                            "SELECT u from Usuario u where u.nome = :nome" )
+	                .setParameter("nome", usuario).getSingleResult();
+		}catch(Exception e){
+			return null;
+		}
+		
+		return result;	
+	}
+	
+	public Usuario buscaIdUsuario (int id) {
+		return this.manager.find (Usuario.class, id);
+	}
+	
 }
 
