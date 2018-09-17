@@ -5,7 +5,7 @@
 }
 
 #entrar {		
-	 margin: 0 0 5px 0;
+	
  	width: 180px;
  	height: 30px;
  	float: right;
@@ -23,27 +23,12 @@
 
 
 #btncadastro{
-	margin-left: 0px;
+	
 	margin-top: 4px;
 	 background-color: #FFE4B5;
 	  border: 1px solid #7e1515;
 }
 
-#btn-defaultcadastro{
-	 border: 1px solid #7e1515;
-}
 
-#panel{
-	
-	width: 780px;
- 	height: 530px;
- 	margin-left: 150px;
-	margin-top: 50px;
-}
 
-#enviarbrinquedo{		
-	 height: 50px;
-	 background-color: #FFDAB9;
-	
-}
 

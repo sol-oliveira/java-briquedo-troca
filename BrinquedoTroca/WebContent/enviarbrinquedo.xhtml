@@ -1,71 +1,105 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.0">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
 
-<html  xmlns="http://www.w3.org/1999/xhtml"	xmlns:f="http://java.sun.com/jsf/core"	xmlns:h="http://java.sun.com/jsf/html">
-<head>
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>BrinquedoTroca Enviar Brinquedo</title>
-	<meta charset="utf-8"/>
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="index.js"></script>
-   <link rel="stylesheet"  href="css/style.css"/>
-   <link href="css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-<f:view>
-<h:form class="container">
-		
-	<div class="border border-warning" align="center">		
-		<img class="img-fluid" src="img/logo_faixa.jpg" width="600"	height="735" />
-    </div>
-	<div  id="cadastrologin" >	
-		
-		  	<ul class="nav nav-pills justify-content-end"> 	
- 	    
-		 	     <li class="nav-item">  
-		  			 <a class="nav-link disabled" href="#"> Voltar ao Menu</a>
-		  		  </li>
-		 		 <li class="nav-item">
-		    		<a class="nav-link disabled" href="#">Sair</a>
-		 		 </li>
-		   </ul>
-				
-     </div>	       
-     		<div class="form-group" align="center">
-			   	<h1 class="text-warning" >Enviar Brinquedo  !</h1> 
-	        
- 		  		
-	      </div> 
- 		  		  		 
- 		  	
- 		  	  <input type="file" class="form-control-file" id="exampleFormControlFile1" />	   		
-	   			
-	   		  <div class="form-row align-items-center">
-      <div class="col-auto my-1">
-         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected="selected"> Descrição do brinquedo </option>
-        <option value="1">Boneca</option>
-        <option value="2">Carro</option>
-        <option value="3">Jogo</option>
-        <option value="3">Acessório</option>
-        <option value="3">Eletrônico</option>
-        <option value="3">Pelúcia</option>
-        <option value="3">Livro</option>
-        <option value="3">outros</option>      
-      </select>
-    </div>
-  	     </div>	
-  	      <div class="col-auto my-1">
-      <button type="submit" class="btn btn-default" id="btncadastro">Enviar</button>
-    </div>
-	      
-	   	
-		</h:form>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<link rel="stylesheet" href="css/style.css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</h:head>
+<h:body>
+	<f:view>
+		<form class="container" method="post" action="UploadBrinquedo"
+			enctype='multipart/form-data'>
+			<H1 style="margin-top: 0px; color: orange;">
+				<h:outputLabel value="Bem vindo(a) #{sessionScope.usuario.nome}" />
+			</H1>
+			<div class="border border-warning" align="center"
+				style="margin-top: .5cm;">
+				<img class="img-fluid" src="img/logo_faixa.jpg" width="600"
+					height="735" />
+			</div>
+			<div id="cadastrologin">
+				<ul class="nav nav-pills justify-content-end">
+					<li class="nav-item"><a class="nav-link disabled"
+						href="menu.xhtml"> Voltar ao Menu</a></li>
+
+				</ul>
+			</div>
+			<div class="form-group" align="center">
+				<input name="teste" hidden="true"
+					value="#{sessionScope.usuario.idUsuario}" /><br />
+			</div>
+			<div align="center" style="margin-top: 2cm;">
+				<img class="img-fluid" src="img/logo.jpg" alt="Chania" width="300"
+					height="245" />
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" id="btncadastro"
+					data-toggle="modal" data-target="#myModal">Selecionar
+					Brinquedo</button>
+				<!-- The Modal -->
+				<div class="modal" id="myModal">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Selecionar Imagem e Descrição</h4>
+								<button type="button" class="close" data-dismiss="modal">X</button>
+							</div>
+							<!-- Modal body -->
+							<div class="modal-body">
+
+								<div align="center">
+									<input type="file" name="file" value="selecione uma imagem" />
+									<BR />
+									<div class="form-row align-items-center">
+										<div class="col-auto my-1" style="margin-left: 30px;">
+											<select name="descricao">
+												<option value="selecionar">Descricao</option>
+												<option value="Boneca">Boneca</option>
+												<option value="Carro">Carro</option>
+												<option value="Jogo">Jogo</option>
+												<option value="Acessorio">Acessório</option>
+												<option value="Eletronico">Eletrônico</option>
+												<option value="Boneco">Boneco</option>
+												<option value="Pelucia">Pelúcia</option>
+												<option value="Livro">Livro</option>
+												<option value="outros">outros</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<input class="btn btn-outline-warning" type="submit"
+									value="Enviar" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
 	</f:view>
-</body>
-</html>
+</h:body>
+	</html>
 </jsp:root>

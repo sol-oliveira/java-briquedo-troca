@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.0">
+
+<html  xmlns="http://www.w3.org/1999/xhtml"	xmlns:f="http://java.sun.com/jsf/core"	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>BrinquedoTroca Home</title>
+	 <link rel="shortcut icon" href="img/logo2.png" />
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="index.js"></script>
+   <link rel="stylesheet"  href="css/style.css"/>
+   <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<f:view>
+		<h:form class="container">
+
+			<div class="border border-warning" align="center"
+				style="margin-top: .5cm;">
+				<img class="img-fluid" src="img/logo_faixa.jpg" width="600"
+					height="735" />
+			</div>
+
+			<div class="container" id="cadastrologin">
+
+				<div id="entrar">
+					<!-- Button to Open the Dropdow Login-->
+					<div class="container" id="login">
+						<ul class="nav nav-pills" role="tablist">
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown"> Entrar </a>
+								<ul class="dropdown-menu" role="menu">
+									<!-- The Modal -->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Logar-se</h4>
+											<button type="button" class="close" data-dismiss="modal">
+												X</button>
+										</div>
+										<div class="modal-body">
+											<Br />
+											<h:outputLabel value="Nome: " />
+											<h:inputText type="name" id="name" placeholder="Nome"
+												value="#{autenticacaoBean.nome}" />
+											<Br /> <Br />
+											<h:outputLabel value="Senha: " />
+											<h:inputText type="password" name="Password"
+												placeholder="Senha" value="#{autenticacaoBean.senha}" />
+											<Br /> <Br />
+
+											<div class="modal-footer">
+												<h:commandButton type="submit"
+													class="btn btn-outline-warning" value="Login"
+													action="#{autenticacaoBean.logar}" />
+												<Br />
+											</div>
+										</div>
+									</div>
+
+								</ul></li>
+						</ul>
+					</div>
+					<!-- Button to Open the Modal Cadastro-->
+					<button type="button" class="btn btn-default" id="btncadastro"
+						data-toggle="modal" data-target="#myModal">Cadastrar</button>
+					<!-- The Modal -->
+					<div class="modal" id="myModal">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Cadastrar-se</h4>
+									<button type="button" class="close" data-dismiss="modal">
+										X</button>
+								</div>
+								<!-- Modal body -->
+								<div class="modal-body"></div>
+
+								<div align="center">
+									<h:outputLabel value="Nome: " />
+									<h:inputText type="name" id="nome" placeholder="Nome"
+										value="#{usuarioBean.nome}" />
+									<Br /> <Br />
+									<h:outputLabel value="E-Mail: " />
+									<h:inputText type="email" placeholder="Email"
+										value="#{usuarioBean.email}" />
+									<Br /> <Br />
+									<h:outputLabel value="Senha: " />
+									<h:inputText type="password" name="Password"
+										placeholder="Senha" value="#{usuarioBean.senha}" />
+									<Br /> <Br />
+								</div>
+
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<h:commandButton type="submit" class="btn btn-outline-warning"
+										value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}" />
+									<Br />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div align="center" style="margin-top: 2cm;">
+				<img class="img-fluid" src="img/logo.jpg" alt="Chania" width="500"
+					height="245" />
+			</div>
+
+			<div align="center" style="margin-top: 20px;">
+				<h1 class="text-warning">SITE DE CONSUMO COLABORATIVO PARA
+					TROCA DE BRINQUEDO</h1>
+			</div>
+		</h:form>
+</f:view>
+</body>
+</html>
+</jsp:root>

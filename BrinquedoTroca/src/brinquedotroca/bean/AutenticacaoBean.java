@@ -14,9 +14,19 @@ import brinquedotroca.repository.UsuarioRepository;
 
 @ManagedBean
 public class AutenticacaoBean {
+	
 	private String nome="";
 	private String senha="" ;
-	
+	private int idUsuario;
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -42,7 +52,7 @@ public class AutenticacaoBean {
 			FacesMessage fm = new FacesMessage("Usuário e/ou senha inválidos.");
 			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
 			fc.addMessage(null,fm);
-			return "home";
+			return "cadastarusuario";
 		}
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("brinquedotroca");
@@ -53,13 +63,14 @@ public class AutenticacaoBean {
 		Usuario usuarioEntity = usuarioRepository.buscaAutenticacao(this.nome);
 		manager.close();
 		
+		
 		if(usuarioEntity != null && (usuarioEntity.getSenha().equals(this.senha))){
 			factory.close();
 			
 			if (this.nome != null) {
 				ExternalContext ec = fc.getExternalContext();
 				HttpSession session = (HttpSession)ec.getSession(false);
-				session.setAttribute("nome", usuarioEntity);
+				session.setAttribute("usuario", usuarioEntity);
 				
 				return "menu";
 			} else {
@@ -68,11 +79,17 @@ public class AutenticacaoBean {
 				fm.setSeverity(FacesMessage.SEVERITY_ERROR);
 				fc.addMessage(null,fm);
 				
-				return "home";
+				return "cadastarusuario";
 			}
 		}		
-		return "home";
+		return "cadastarusuario";
 	}
 
-
+	public String sair() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ExternalContext ec = fc.getExternalContext();
+		HttpSession session = (HttpSession) ec.getSession(false);
+		session.removeAttribute("usuario");
+		return "cadastrarusuario";
+	}
 }

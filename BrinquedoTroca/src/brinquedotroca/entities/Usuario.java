@@ -31,6 +31,8 @@ public class Usuario {
 	@OneToMany
 	List<Brinquedo>brinquedo; */
 	
+	//depois que resolver o login, vc apaga isso aqui
+	
 	
 	public int getIdUsuario() {
 		return idUsuario;

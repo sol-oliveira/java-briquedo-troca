@@ -43,7 +43,7 @@ public class UsuarioBean {
 		
 		EntityManager manager = factory.createEntityManager();
 		
-		manager.getTransaction().begin();
+		manager.getTransaction().begin();		
 		
 		UsuarioRepository usuariorepository = new UsuarioRepository(manager);
 		
@@ -53,22 +53,17 @@ public class UsuarioBean {
 		usuario.setSenha(senha);
 		
 		usuariorepository.adicionaUsuario(usuario);		
+		usuariorepository.buscaAutenticacao(nome);
 		
 		manager.getTransaction().commit();
 
 		manager.close();
 
 		factory.close();	
+	
 		
-		nome = "";
-		email = "";
-		senha = "";
-		
-		return "cadastro";
+		return "usuariocadastrado";
 	}
-	
 
-
-	
 	
 }

@@ -1,12 +1,12 @@
 package brinquedotroca.entities;
 
-import java.io.File;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,17 +18,24 @@ public class Brinquedo {
 	@GeneratedValue
 	int idBrinquedo;
 
-	@Column (name="foto", nullable=false)
-	File foto;
+	@Column (name="foto", nullable=false, length=100000)
+	@Lob
+	byte[] foto; 
 
 	@Column (name="descricao", nullable=false)
 	String descricao;
 
-
 	@ManyToOne(fetch=FetchType.LAZY) 
 	@JoinColumn( name="usuario_id")  
 	Usuario usuario;  
+	
+	@Column (name="imagem_convertida")
+	String imagemConvertida;
 
+
+	public String getImagemConvertida() {
+		return imagemConvertida;
+	}
 
 	public int getIdBrinquedo() {
 		return idBrinquedo;
@@ -38,13 +45,13 @@ public class Brinquedo {
 		this.idBrinquedo = idBrinquedo;
 	}
 
-	public File getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(File foto) {
-		this.foto = foto;
-	}
+	public void setFoto(byte[] in) {
+		this.foto = in;
+	} 
 
 	public String getDescricao() {
 		return descricao;
@@ -61,5 +68,9 @@ public class Brinquedo {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public void setImagemConvertida(String imagemConvertida) {
+		this.imagemConvertida = imagemConvertida;
+	} 
 
 }

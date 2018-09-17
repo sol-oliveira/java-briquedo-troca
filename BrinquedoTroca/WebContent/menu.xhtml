@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.0">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
 
-<html  xmlns="http://www.w3.org/1999/xhtml"	xmlns:f="http://java.sun.com/jsf/core"	xmlns:h="http://java.sun.com/jsf/html">
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>BrinquedoTroca Menu</title>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="index.js"></script>
-   <link rel="stylesheet"  href="css/style.css"/>
-   <link href="css/bootstrap.min.css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>BrinquedoTroca Menu</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="index.js"></script>
+<link rel="stylesheet" href="css/style.css" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-<f:view>
-<h:form class="container">
-		
-	<div class="border border-warning" align="center">		
-		<img class="img-fluid" src="img/logo_faixa.jpg" width="600"	height="735" />
-    </div>
-	<div  id="cadastrologin" >
-	
-  	<ul class="nav nav-pills justify-content-end"> 	
-  	
-  	<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button"  aria-haspopup="true" aria-expanded="false" >Meus Brinquedos</a>
-    <div class="dropdown-menu" >
-      <a class="dropdown-item" href="#">Visualizar</a>        
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item"  href="enviarbrinquedo.xhtml">Enviar</a>
-    </div>
-  </li>		
-
-	  <li class="nav-item">  
-    <a class="nav-link disabled" href="#"> Outros Brinquedos</a>
-    </li>
-
-  <li class="nav-item" >
-    <a class="nav-link disabled"  href="#">Mensagens</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Sair</a>
-  </li>
-</ul>
-					
-</div>	     
- 	
-    	<div align="center">
-				<img class="img-fluid" src="img/logo.jpg" alt="Chania" width="700" 
-					height="545" />
-
+	<f:view>
+		<h:form class="container">
+			<H1 style="margin-top: 0px; color: orange;">
+				<h:outputLabel value="Bem vindo(a) #{sessionScope.usuario.nome}" />				
+			</H1>
+			
+			<div class="border border-warning" align="center">
+				<img class="img-fluid" src="img/logo_faixa.jpg" width="600"
+					height="735" />
 			</div>
+						
+			<div id="cadastrologin">
+				<ul class="nav nav-pills justify-content-end">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">Meus
+							Brinquedos</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="meusbrinquedos.xhtml">Visualizar</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="enviarbrinquedo.xhtml">	Enviar
+							</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link disabled"
+						href="outrosbrinquedos.xhtml"> Outros Brinquedos</a></li>
 
+			<!--  		<li class="nav-item"><a class="nav-link disabled" href="#">Mensagens</a>
+					</li>   -->   
+					<li class="nav-item"><h:commandButton type="submit"
+							class="btn btn-outline-warning" value="Sair"
+							style="margin-top: 5px; color: orange; margin-right:5px;"
+							action="#{autenticacaoBean.sair}" /></li>
+				</ul>
+			</div>
+			
 			<div align="center">
-				<h1 class="text-warning">SITE DE CONSUMO COLABORATIVO PARA
-					TROCA DE BRINQUEDO</h1>
+				<img class="img-fluid" src="img/logo.jpg" alt="Chania" width="500"
+					style="margin-top: 70px;" height="245" />
+					
 			</div>
 		</h:form>
 	</f:view>
-	
-	
-	
-	
-	
-	
 </body>
-</html>
+	</html>
 </jsp:root>
