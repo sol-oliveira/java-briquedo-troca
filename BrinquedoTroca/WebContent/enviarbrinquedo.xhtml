@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
-
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk" version="2.0">
+	
 	<html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>BrinquedoTroca Enviar Brinquedo</title>
+	<title>BrinquedoTroca Cadastrar Brinquedo</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
@@ -17,17 +18,14 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 	<link rel="stylesheet" href="css/style.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
 </h:head>
 <h:body>
 	<f:view>
-		<form class="container" method="post" action="UploadBrinquedo"
-			enctype='multipart/form-data'>
+		<h:form class="container"  enctype="multipart/form-data" >
 			<H1 style="margin-top: 0px; color: orange;">
 				<h:outputLabel value="Bem vindo(a) #{sessionScope.usuario.nome}" />
 			</H1>
@@ -43,18 +41,15 @@
 
 				</ul>
 			</div>
-			<div class="form-group" align="center">
-				<input name="teste" hidden="true"
-					value="#{sessionScope.usuario.idUsuario}" /><br />
-			</div>
+			<div class="form-group" align="center">	</div>
 			<div align="center" style="margin-top: 2cm;">
 				<img class="img-fluid" src="img/logo.jpg" alt="Chania" width="300"
 					height="245" />
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" id="btncadastro"
-					data-toggle="modal" data-target="#myModal">Selecionar
+				<button type="button" class="btn btn-default" id="btncadastro" style="height: 50;"
+					data-toggle="modal" data-target="#myModal">Cadastrar
 					Brinquedo</button>
 				<!-- The Modal -->
 				<div class="modal" id="myModal">
@@ -67,39 +62,36 @@
 							</div>
 							<!-- Modal body -->
 							<div class="modal-body">
-
 								<div align="center">
-									<input type="file" name="file" value="selecione uma imagem" />
-									<BR />
-									<div class="form-row align-items-center">
-										<div class="col-auto my-1" style="margin-left: 30px;">
-											<select name="descricao">
-												<option value="selecionar">Descricao</option>
-												<option value="Boneca">Boneca</option>
-												<option value="Carro">Carro</option>
-												<option value="Jogo">Jogo</option>
-												<option value="Acessorio">Acessório</option>
-												<option value="Eletronico">Eletrônico</option>
-												<option value="Boneco">Boneco</option>
-												<option value="Pelucia">Pelúcia</option>
-												<option value="Livro">Livro</option>
-												<option value="outros">outros</option>
-											</select>
+								 <t:inputFileUpload value="#{brinquedoBean.foto}" /><Br /> <Br />					
+							 			<div class="form-row align-items-center">
+										<div class="col-auto my-1" style="margin-left: 30px;">											
+											<h:selectOneMenu id="descricao" value="#{brinquedoBean.descricao}"  >                 
+	                							 <f:selectItem itemValue="Boneca" /> 
+								                 <f:selectItem itemValue="Carro" /> 
+								                 <f:selectItem itemValue="Jogo" /> 
+								                 <f:selectItem itemValue="Acessorio"/> 
+								                 <f:selectItem itemValue="Eletronico"/> 
+								                 <f:selectItem itemValue="Boneco"/> 
+								                 <f:selectItem itemValue="Pelucia"/> 
+								                 <f:selectItem itemValue="Livro"/> 
+								                 <f:selectItem itemValue="outros"/>                   
+								            </h:selectOneMenu>																
 										</div>
 									</div>
 								</div>
 							</div>
 							<!-- Modal footer -->
 							<div class="modal-footer">
-								<input class="btn btn-outline-warning" type="submit"
-									value="Enviar" />
+								<h:commandButton  class="btn btn-outline-warning" value="Salvar" action="#{brinquedoBean.adiciona}" />
+								<h:messages />
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</form>
+		</h:form>
 	</f:view>
 </h:body>
-	</html>
+</html>
 </jsp:root>

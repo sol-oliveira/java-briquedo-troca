@@ -19,9 +19,7 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 	<link rel="stylesheet" href="css/style.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -48,18 +46,17 @@
 			</div>
 
 			<div class="col-xs-28 col-sm-20 col-md-18" align="center">
-				<ui:repeat value="#{brinquedoBean.brinquedosMostrar}" var="item">
+				<ui:repeat var="item" value="#{brinquedoBean.listtoy}">
 					<div class="card text-center">
 						<div class="border border-warning" style="margin: 50px;">
-							<img class="img-fluid" alt="Card image cap"
-								src="data:image/jpg;base64,${item.imagemConvertida}" width="500" />
+							<h:graphicImage value="#{item.nomeFoto}" width="500" />
+							<Br />
+							<h:inputText value="#{item.descricao}" />
+							<Br />
 							<div class="card-body ">
-								<h:inputHidden value="#{item.idBrinquedo}"></h:inputHidden>
 								<h:commandButton type="submit" class="btn btn-outline-warning"
 									value="Deletar"
-									style="margin-top: 5px; color: orange; margin-right:5px;"
-									action="#{brinquedoBean.deletarBrinquedo(item.idBrinquedo)}">
-								</h:commandButton>
+									style="margin-top: 5px; color: orange; margin-right:5px;"></h:commandButton>
 							</div>
 						</div>
 					</div>

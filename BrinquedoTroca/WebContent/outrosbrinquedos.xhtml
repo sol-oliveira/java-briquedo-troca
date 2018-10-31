@@ -3,9 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html" version="2.0">
 
-	<html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:h="http://java.sun.com/jsf/html"
+	<html xmlns="http://www.w3.org/1999/xhtml"		
 		xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:p="http://primefaces.org/ui">
 <h:head>
@@ -19,9 +17,7 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 	<link rel="stylesheet" href="css/style.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -40,32 +36,60 @@
 				<ul class="nav nav-pills justify-content-end">
 					<li class="nav-item"><a class="nav-link disabled"
 						href="menu.xhtml"> Voltar ao Menu</a></li>
-
 				</ul>
 			</div>
+						
 			<div class="form-group" align="center">
 				<h1 class="text-warning">Outros Brinquedos!</h1>
 			</div>
 			<div class="col-xs-28 col-sm-20 col-md-18" align="center">
-				<ui:repeat value="#{brinquedoBean.outrasImagens}" var="item">
+				<ui:repeat value="#{brinquedoBean.outroslisttoy}" var="item">
 					<div class="card text-center">
 						<div class="border border-warning" style="margin: 50px;">
-							<img class="img-fluid" alt="Card image cap"
-								src="data:image/jpg;base64,${item}" width="500" />
-							<div class="card-body">
-								<h:commandButton type="submit" class="btn btn-outline-warning"
-									value="Sugerir Troca"
-									style="margin-top: 5px; color: orange; margin-right:5px;"
-									action="#{brinquedoBean.sugerirTroca}">
-								</h:commandButton>
-
-							</div>
+							<h:graphicImage value="#{item.nomeFoto}" width="500" /><Br />
+      			   			<h:inputText value="#{item.descricao}" /><Br />
+							<div class="card-body">			
 						</div>
-					</div>
-				</ui:repeat>
+						<BUTTON type="button" class="btn btn-outline-warning" 
+								data-toggle="modal" data-target="#myModal">Sugerir Troca</BUTTON>						
+								<!-- The Modal -->
+								<div class="modal" id="myModal">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">	
+											<div class="modal-header">
+												<h4 class="modal-title">Sugerir Troca </h4>
+												</div>		
+											<!-- Modal body -->
+											<div class="modal-body" style="margin: 10px;">
+													<div align="center">
+														<div class="col-xs-28 col-sm-20 col-md-18" align="center">		
+														<ui:repeat var="item" value="#{brinquedoBean.listtoy}">							
+															<div class="card text-center">
+															<div class="border border-warning" style="margin: 10px;">
+														    	<h:graphicImage value="#{item.nomeFoto}" width="100" /><Br />
+										      			   		<h:inputText value="#{item.descricao}; #{item.id}"  /><Br />										      			   		
+										      			   	<div class="card-body ">
+										 						<h:commandButton type="submit" class="btn btn-outline-warning"	value="Sugerir Troca"
+																			style="margin-top: 5px; color: orange; margin-right:5px;" ></h:commandButton>
+										 					</div>
+										 				</div>
+										 				</div>	
+										 			</ui:repeat> 					
+													</div>
+												</div>
+											</div>	
+											<!-- Modal footer -->																						
+										</div>										
+									</div>
+								</div>												
+																			
+						</div>					
+					</div>					
+				</ui:repeat>				
 			</div>
-		</h:form>
-	</f:view>
+						
+</h:form>
+</f:view>
 </h:body>
-	</html>
+</html>
 </jsp:root>

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script type="text/javascript" src="index.js"></script>
    <link rel="stylesheet"  href="css/style.css"/>
    <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -19,7 +19,6 @@
 <body>
 <f:view>
 		<h:form class="container">
-
 			<div class="border border-warning" align="center"
 				style="margin-top: .5cm;">
 				<img class="img-fluid" src="img/logo_faixa.jpg" width="600"
@@ -27,7 +26,6 @@
 			</div>
 
 			<div class="container" id="cadastrologin">
-
 				<div id="entrar">
 					<!-- Button to Open the Dropdow Login-->
 					<div class="container" id="login">
@@ -52,7 +50,6 @@
 											<h:inputText type="password" name="Password"
 												placeholder="Senha" value="#{autenticacaoBean.senha}" />
 											<Br /> <Br />
-
 											<div class="modal-footer">
 												<h:commandButton type="submit"
 													class="btn btn-outline-warning" value="Login"
@@ -99,7 +96,7 @@
 								<!-- Modal footer -->
 								<div class="modal-footer">
 									<h:commandButton type="submit" class="btn btn-outline-warning"
-										value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}" />
+										value="Cadastrar" action="#{usuarioBean.adiciona}" />
 									<Br />
 								</div>
 							</div>

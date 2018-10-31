@@ -37,14 +37,11 @@ public class UsuarioBean {
 	}
 	
 	
-	public String cadastrarUsuario() {
+	public String adiciona() {
 		
-		EntityManagerFactory factory =	Persistence.createEntityManagerFactory("brinquedotroca");
-		
-		EntityManager manager = factory.createEntityManager();
-		
-		manager.getTransaction().begin();		
-		
+		EntityManagerFactory factory =	Persistence.createEntityManagerFactory("brinquedotroca");		
+		EntityManager manager = factory.createEntityManager();		
+		manager.getTransaction().begin();				
 		UsuarioRepository usuariorepository = new UsuarioRepository(manager);
 		
 		Usuario usuario = new Usuario();	
@@ -52,13 +49,11 @@ public class UsuarioBean {
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		
-		usuariorepository.adicionaUsuario(usuario);		
-		usuariorepository.buscaAutenticacao(nome);
+		usuariorepository.adiciona(usuario);		
+		usuariorepository.autentica(nome);
 		
 		manager.getTransaction().commit();
-
 		manager.close();
-
 		factory.close();	
 	
 		

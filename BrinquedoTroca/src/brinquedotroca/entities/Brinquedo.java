@@ -10,48 +10,40 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table (name="Brinquedo")
-public class Brinquedo {
+public class Brinquedo{	
+
 	@Id
 	@GeneratedValue
-	int idBrinquedo;
+	int id;
 
-	@Column (name="foto", nullable=false, length=100000)
 	@Lob
-	byte[] foto; 
+	@Column (name="foto")
+	byte[] foto;	
 
 	@Column (name="descricao", nullable=false)
-	String descricao;
+	String descricao;	
 
 	@ManyToOne(fetch=FetchType.LAZY) 
 	@JoinColumn( name="usuario_id")  
-	Usuario usuario;  
-	
-	@Column (name="imagem_convertida")
-	String imagemConvertida;
+	Usuario usuario; 
 
-
-	public String getImagemConvertida() {
-		return imagemConvertida;
+	public int getId() {
+		return id;
 	}
 
-	public int getIdBrinquedo() {
-		return idBrinquedo;
-	}
-
-	public void setIdBrinquedo(int idBrinquedo) {
-		this.idBrinquedo = idBrinquedo;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(byte[] in) {
-		this.foto = in;
-	} 
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
 
 	public String getDescricao() {
 		return descricao;
@@ -69,8 +61,14 @@ public class Brinquedo {
 		this.usuario = usuario;
 	}
 
-	public void setImagemConvertida(String imagemConvertida) {
-		this.imagemConvertida = imagemConvertida;
-	} 
+	String nomeFoto = "";
+
+	public void setNomeFoto(String nomeFoto) {
+		this.nomeFoto = nomeFoto;
+	}
+
+	public String getNomeFoto() {
+		return this.nomeFoto;
+	}
 
 }
