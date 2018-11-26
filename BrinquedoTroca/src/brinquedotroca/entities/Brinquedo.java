@@ -16,18 +16,18 @@ public class Brinquedo{
 
 	@Id
 	@GeneratedValue
-	int id;
+	private int id;
 
 	@Lob
 	@Column (name="foto")
-	byte[] foto;	
+	private byte[] foto;	
 
 	@Column (name="descricao", nullable=false)
-	String descricao;	
+	private String descricao;	
 
 	@ManyToOne(fetch=FetchType.LAZY) 
 	@JoinColumn( name="usuario_id")  
-	Usuario usuario; 
+	private Usuario usuario; 
 
 	public int getId() {
 		return id;

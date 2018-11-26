@@ -11,16 +11,13 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue
-	int id;
+	private int id;
 
 	@Column (name="nome", nullable=false)
-	String nome;
-
-	@Column (name="email", nullable=false)
-	String email;
+	private String nome;
 
 	@Column (name="senha", nullable=false)
-	String senha;
+	private String senha;
 
 	public int getIdUsuario() {
 		return id;
@@ -36,14 +33,6 @@ public class Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getSenha() {

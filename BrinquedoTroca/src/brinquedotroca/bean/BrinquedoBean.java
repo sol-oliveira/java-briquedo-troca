@@ -13,7 +13,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import brinquedotroca.entities.Brinquedo;
 import brinquedotroca.entities.Usuario;
@@ -78,7 +77,7 @@ public class BrinquedoBean {
 		BrinquedoRepository toyRepository = new BrinquedoRepository(manager);
 		manager.getTransaction().begin();
 
-		List<Brinquedo> brinquedo = toyRepository.busca(u.getIdUsuario());		
+		List<Brinquedo> brinquedo = toyRepository.busca(u.getIdUsuario());
 		manager.close();
 
 		for(Brinquedo t : brinquedo) { 
@@ -89,39 +88,46 @@ public class BrinquedoBean {
 	}
 
 
-	public String adiciona() throws IOException {
+	public void adiciona() throws IOException {
 
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		Usuario u = (Usuario) session.getAttribute("usuario"); 
 		u.getIdUsuario();
-	
-		String fileName = FilenameUtils.getBaseName(foto.getName()); 
-		String contentType = foto.getContentType();
-		byte[] bytes = foto.getBytes();
+
+		byte[] bytes = new byte[0];
+
+		if(foto != null) bytes = foto.getBytes();		
+
+		EntityManagerFactory factory = 	Persistence.createEntityManagerFactory("brinquedotroca");			
+		EntityManager manager = factory.createEntityManager();			
+		manager.getTransaction().begin();			
+		BrinquedoRepository toyRepository = new BrinquedoRepository(manager);	
 
 		Brinquedo brinquedo = new Brinquedo();
 		brinquedo.setFoto(bytes);
 		brinquedo.setDescricao(descricao);  
 		brinquedo.setUsuario(u);
 
-		EntityManagerFactory factory = 	Persistence.createEntityManagerFactory("brinquedotroca");			
-		EntityManager manager = factory.createEntityManager();			
-		manager.getTransaction().begin();			
-		BrinquedoRepository toyRepository = new BrinquedoRepository(manager);						
-		toyRepository.adiciona(brinquedo);			
-		manager.getTransaction().commit();
-		manager.close();
-		factory.close();
- 
-		FacesContext.getCurrentInstance().addMessage(null, 
-				new FacesMessage(String.format("Arquivo '%s' do tipo '%s' carregado com sucesso!", fileName, contentType)));
-		
-		return "brinquedoenviado"; 
-		
+		if(descricao.equals("Escolher descricao") || bytes.length == 0) {
+			System.out.println("descricao.trim ->"+ descricao);
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage(String.format(" Falha no cadastro do brinquedo. Por favor, preencha todos os campos! ")));
+		}else {
+			toyRepository.adiciona(brinquedo);			
+			manager.getTransaction().commit();
+			manager.close();
+			factory.close();
+			System.out.println("descricao ->"+getDescricao());
+			System.out.println("descricao1 ->"+ descricao);
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage(String.format(" Brinquedo cadastrado com sucesso! ")));
+		}										
 	}
 
-	private void geraImagemServidor(Brinquedo toy, String pathServidor) {
+
+
+	public void geraImagemServidor(Brinquedo toy, String pathServidor) {
 		try {
 
 			if(toy.getFoto() != null) {
@@ -166,10 +172,32 @@ public class BrinquedoBean {
 				t.setNomeFoto("/resources/imagens/" + t.getId() + ".JPG");
 				outroslisttoy.add(t);
 			}
-
+			System.out.println("TESTE PARA TAMANHO DO RETORNO " + toy.size() + " - usuario" + u.getIdUsuario());
 		}catch (Exception e) {
 			System.out.println("Erro " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
+
+
+	public String deletarBrinquedo() {
+
+		EntityManagerFactory factory =	Persistence.createEntityManagerFactory("brinquedotroca");				
+		EntityManager manager = factory.createEntityManager();				
+		manager.getTransaction().begin();
+
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		Usuario u = (Usuario) session.getAttribute("usuario"); 
+
+		BrinquedoRepository brinquedorepository = new BrinquedoRepository(manager);
+
+		brinquedorepository.deletarBrinquedo(u.getIdUsuario());		
+		manager.getTransaction().commit();
+		manager.close();
+		factory.close();
+
+		return "brinquedodeletado";
+	}
+
 }

@@ -20,7 +20,7 @@ public class BrinquedoRepository {
 		this.manager.persist(toy);
 	}
 
-	public Brinquedo bucaId (int id) {
+	public Brinquedo buscaId (int id) {
 		return this.manager.find (Brinquedo.class , id);
 	}
 
@@ -49,6 +49,12 @@ public class BrinquedoRepository {
 		return query.getResultList();
 	}
 
+	public void deletarBrinquedo(int id) {
+		// TODO Auto-generated method stub		 
+		Brinquedo b = this.manager.find (Brinquedo.class, id);
+		this.manager.remove(b);
+
+	}
 }
 
 

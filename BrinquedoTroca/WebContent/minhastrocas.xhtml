@@ -3,8 +3,7 @@
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk">
+	xmlns:h="http://java.sun.com/jsf/html">
 	<ui:define name="conteudo">
 		<h:form enctype="multipart/form-data">
 			<div id="cadastrologin">
@@ -14,19 +13,20 @@
 				</ul>
 			</div>
 			<div class="form-group" align="center">
-				<h1 class="text-warning">Meus Brinquedos!</h1>
+				<h1 class="text-warning">Minhas Trocas!</h1>
 			</div>
+
 			<div class="col-xs-28 col-sm-20 col-md-18" align="center">
-				<ui:repeat var="item" value="#{brinquedoBean.listtoy}">
+				<ui:repeat var="item" value="#{trocaBean.listMinhaTroca}">
 					<div class="card text-center">
 						<div class="border border-warning" style="margin: 50px;">
-							<h:graphicImage value="#{item.nomeFoto}" width="300" />
+
 							<Br />
-							<h:inputText value="#{item.descricao}" />
+							<h:inputText value="#{item.id}" />
 							<Br />
 							<div class="card-body ">
 								<h:commandButton type="submit" class="btn btn-outline-warning"
-									value="Deletar" action="#{brinquedoBean.deletarBrinquedo}"
+									value="Deletar"
 									style="margin-top: 5px; color: orange; margin-right:5px;"></h:commandButton>
 							</div>
 						</div>

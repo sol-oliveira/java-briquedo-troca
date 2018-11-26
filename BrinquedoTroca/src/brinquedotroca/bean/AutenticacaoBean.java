@@ -17,15 +17,6 @@ public class AutenticacaoBean {
 
 	private String nome="";
 	private String senha="" ;
-	private int idUsuario;
-
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
 
 	public String getNome() {
 		return nome;
@@ -46,13 +37,6 @@ public class AutenticacaoBean {
 	public String logar(){
 
 		FacesContext fc = FacesContext.getCurrentInstance();
-
-		if(this.nome == "" || this.senha == "" ){
-			FacesMessage fm = new FacesMessage("Usuário e/ou senha inválidos.");
-			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
-			fc.addMessage(null,fm);
-			return "index";
-		}
 
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("brinquedotroca");
 		EntityManager manager = factory.createEntityManager();
@@ -75,11 +59,16 @@ public class AutenticacaoBean {
 
 				FacesMessage fm = new FacesMessage("Usuário e/ou senha inválidos.");
 				fm.setSeverity(FacesMessage.SEVERITY_ERROR);
-				fc.addMessage(null,fm);
+				fc.addMessage(null,fm); 
 
 				return "index";
 			}
-		}		
+		}	
+
+		FacesMessage fm = new FacesMessage("Usuário e/ou senha inválidos.");
+		fm.setSeverity(FacesMessage.SEVERITY_ERROR);
+		fc.addMessage(null,fm); 
+
 		return "index";
 	}
 
@@ -90,4 +79,13 @@ public class AutenticacaoBean {
 		session.removeAttribute("usuario");
 		return "index";
 	}
+
+	public String index() {
+		return "index";
+	}
+
+	public String menu() {
+		return "menu";
+	}
+
 }

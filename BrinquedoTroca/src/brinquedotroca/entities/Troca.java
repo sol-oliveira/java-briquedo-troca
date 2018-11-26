@@ -15,22 +15,21 @@ public class Troca {
 
 	@Id
 	@GeneratedValue
-	int id;
-
-	String finalizada = "";
-
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn (name="destinatario", nullable=false)
-	Brinquedo destinatario; 
+	private int id;	
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name="remetente", nullable=false)
-	Brinquedo remetente;
+	private Brinquedo remetente; 
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn (name="destinatario", nullable=false)
+	private Brinquedo destinatario; 
+
+	private String finalizada = "";
 
 	public int getId() {
 		return id;
-	}
-
+	}	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -43,13 +42,12 @@ public class Troca {
 		this.finalizada = finalizada;
 	}
 
-
-	public int getIdTroca() {
-		return id;
+	public Brinquedo getRemetente() {
+		return remetente;
 	}
 
-	public void setIdTroca(int idTroca) {
-		this.id = idTroca;
+	public void setRemetente(Brinquedo remetente) {
+		this.remetente = remetente;
 	}
 
 	public Brinquedo getDestinatario() {
@@ -58,14 +56,6 @@ public class Troca {
 
 	public void setDestinatario(Brinquedo destinatario) {
 		this.destinatario = destinatario;
-	}
-
-	public Brinquedo getRemetente() {
-		return remetente;
-	}
-
-	public void setRemetente(Brinquedo remetente) {
-		this.remetente = remetente;
 	}
 
 }

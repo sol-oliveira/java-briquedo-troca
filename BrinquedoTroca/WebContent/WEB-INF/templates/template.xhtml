@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk" version="2.0">
+	<html xmlns="http://www.w3.org/1999/xhtml" />
+	<h:head>
+		<meta http-equiv="Content-Type"
+			content="text/html; charset=ISO-8859-1" />
+		<title>BrinquedoTroca</title>
+		<link rel="shortcut icon" href="img/logo2.png" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+		<link rel="stylesheet" href="css/style.css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="shortcut icon" href="img/icone.ico" />
+	</h:head>
+	<h:body>
+		<f:view>
+			<h:form class="container" enctype="multipart/form-data">
+				<div id="header" class="border border-warning" align="center"
+					style="margin-top: .5cm;">
+					<img class="img-fluid" src="img/logo_faixa.jpg" width="600"
+						height="735" />
+				</div>
+				<ui:insert name="conteudo"></ui:insert>
+				<div id="footer" align="center" style="margin-top: 20px;">
+					<h1 class="text-warning">SITE DE CONSUMO COLABORATIVO PARA
+						TROCA DE BRINQUEDO</h1>
+				</div>
+			</h:form>
+		</f:view>
+	</h:body>
+</jsp:root>

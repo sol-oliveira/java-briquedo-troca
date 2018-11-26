@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<ui:define name="conteudo">
+		<div class="container" id="cadastrologin">
+			<div id="cadastrologin">
+				<ul class="nav nav-pills justify-content-end">
+					<li class="nav-item"><a class="nav-link disabled"
+						href="outrosbrinquedos.xhtml"> Voltar</a></li>
+				</ul>
+			</div>
+		</div>
+		<div align="center" style="margin-top: 10px;">
+			<h1 class="text-warning">Sugestão de Troca enviada !!</h1>
+		</div>
+		<ui:include src="/modularizacao.xhtml" />
+	</ui:define>
+</ui:composition>
